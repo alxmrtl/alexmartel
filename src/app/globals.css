@@ -1,26 +1,251 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ─── Cyberpunk Neon Palette ─── */
+  --bg-primary: #0a0a1a;
+  --bg-secondary: #0d0f1e;
+  --bg-tertiary: #141629;
+  --bg-elevated: #1a1d35;
+
+  /* Surface / Window */
+  --window-bg: #0c0e1c;
+  --window-border: #1e2347;
+  --window-border-focus: #00e5ff;
+  --window-header: #0f1228;
+
+  /* Text */
+  --text-primary: #e0e8ff;
+  --text-secondary: #8892b0;
+  --text-tertiary: #4a5580;
+  --text-dim: #2d3460;
+
+  /* Accent Colors */
+  --accent-cyan: #00e5ff;
+  --accent-magenta: #ff2d7b;
+  --accent-purple: #b44dff;
+  --accent-green: #00ff9d;
+  --accent-amber: #ffb800;
+  --accent-orange: #ff6b35;
+
+  /* Legacy accent mappings for components */
+  --accent-terracotta: #00e5ff;
+  --accent-sage: #00ff9d;
+  --accent-rose: #ff2d7b;
+  --accent-plum: #b44dff;
+
+  /* Accent Glows (for box-shadows) */
+  --glow-cyan: rgba(0, 229, 255, 0.3);
+  --glow-magenta: rgba(255, 45, 123, 0.3);
+  --glow-purple: rgba(180, 77, 255, 0.3);
+  --glow-green: rgba(0, 255, 157, 0.3);
+  --glow-amber: rgba(255, 184, 0, 0.3);
+  --glow-orange: rgba(255, 107, 53, 0.3);
+
+  /* Legacy glow mappings */
+  --glow-terracotta: rgba(0, 229, 255, 0.3);
+  --glow-sage: rgba(0, 255, 157, 0.3);
+  --glow-rose: rgba(255, 45, 123, 0.3);
+  --glow-plum: rgba(180, 77, 255, 0.3);
+
+  /* Typography */
+  --font-sans: 'JetBrains Mono', 'Share Tech Mono', monospace;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-display: 'Orbitron', 'JetBrains Mono', monospace;
+
+  /* Sizing */
+  --window-radius: 4px;
+  --header-height: 36px;
+
+  /* Dashboard Layout */
+  --topbar-height: 48px;
+  --sidebar-width: 220px;
+  --widget-rail-width: 260px;
+
+  /* Spacing */
+  --space-grid-gap: 1.5rem;
+  --space-card-padding: 2rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection styling — magenta */
+::selection {
+  background: var(--accent-magenta);
+  color: #fff;
+}
+
+/* ─── Neon Scrollbars ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-cyan);
+  border-radius: 3px;
+  box-shadow: 0 0 6px var(--glow-cyan);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #33ecff;
+}
+
+/* ─── Animations ─── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* ─── Shimmer Animation ─── */
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+/* ─── Float Animation ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ─── Fade Out Animation ─── */
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(1.02); }
+}
+
+/* ─── Scanline Overlay ─── */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* ─── Grid Pulse Animation ─── */
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.06; }
+}
+
+/* ─── Glitch/Flicker ─── */
+@keyframes glitch {
+  0%, 100% { transform: translate(0); filter: none; }
+  20% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+  40% { transform: translate(2px, -1px); filter: hue-rotate(-90deg); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 2px); filter: hue-rotate(45deg); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.95; }
+  52% { opacity: 0.85; }
+  54% { opacity: 1; }
+  90% { opacity: 0.97; }
+  92% { opacity: 0.9; }
+  94% { opacity: 1; }
+}
+
+@keyframes textGlitch {
+  0%, 100% { text-shadow: 2px 0 #ff2d7b, -2px 0 #00e5ff; }
+  25% { text-shadow: -2px 0 #ff2d7b, 2px 0 #00e5ff; }
+  50% { text-shadow: 2px 2px #ff2d7b, -2px -2px #00e5ff; }
+  75% { text-shadow: -2px 2px #ff2d7b, 2px -2px #00e5ff; }
+}
+
+/* ─── Neon Breathe Animation ─── */
+@keyframes breathe {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.1), inset 0 0 8px rgba(0, 229, 255, 0.03);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--breathe-glow, rgba(0, 229, 255, 0.2)), inset 0 0 12px rgba(0, 229, 255, 0.05);
+  }
+}
+
+/* ─── Boot Progress Animation ─── */
+@keyframes progress-line {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* ─── Neon Border Pulse ─── */
+@keyframes neonPulse {
+  0%, 100% { border-color: rgba(0, 229, 255, 0.3); }
+  50% { border-color: rgba(0, 229, 255, 0.6); }
+}
+
+/* ─── Typing cursor blink ─── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ─── Particle drift ─── */
+@keyframes particleDrift {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+}
+
+/* ─── Corner bracket decoration mixin (use via CSS classes) ─── */
+.neon-bracket {
+  position: relative;
+}
+
+.neon-bracket::before,
+.neon-bracket::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--accent-cyan);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.neon-bracket::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.neon-bracket::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
 }
