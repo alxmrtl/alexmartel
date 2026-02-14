@@ -50,7 +50,7 @@ export default function AboutMe() {
                 <div
                   className="w-16 h-16 rounded flex items-center justify-center text-xl font-mono font-bold shrink-0"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(255, 45, 123, 0.15))',
+                    background: 'linear-gradient(135deg, rgba(var(--accent-cyan-rgb), 0.15), rgba(var(--accent-magenta-rgb), 0.15))',
                     border: '1px solid var(--accent-cyan)',
                     color: 'var(--accent-cyan)',
                     boxShadow: '0 0 15px var(--glow-cyan)',
@@ -62,9 +62,9 @@ export default function AboutMe() {
                   <h2 className="text-lg font-bold" style={{ color: 'var(--accent-cyan)', fontFamily: 'var(--font-display)' }}>Alex Martel</h2>
                   <p className="text-xs italic font-mono" style={{ color: 'var(--text-secondary)' }}>Creator &middot; Builder &middot; Flow Engineer</p>
                   <div className="flex gap-2 mt-2">
-                    <span className="text-[10px] px-2 py-0.5 rounded font-mono uppercase tracking-wider" style={{ background: 'rgba(0, 229, 255, 0.15)', color: 'var(--accent-cyan)', border: '1px solid rgba(0, 229, 255, 0.3)' }}>Developer</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded font-mono uppercase tracking-wider" style={{ background: 'rgba(180, 77, 255, 0.15)', color: 'var(--accent-purple)', border: '1px solid rgba(180, 77, 255, 0.3)' }}>Coach</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded font-mono uppercase tracking-wider" style={{ background: 'rgba(0, 255, 157, 0.15)', color: 'var(--accent-green)', border: '1px solid rgba(0, 255, 157, 0.3)' }}>Designer</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded font-mono uppercase tracking-wider" style={{ background: 'rgba(var(--accent-cyan-rgb), 0.15)', color: 'var(--accent-cyan)', border: '1px solid rgba(var(--accent-cyan-rgb), 0.3)' }}>Developer</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded font-mono uppercase tracking-wider" style={{ background: 'rgba(var(--accent-purple-rgb), 0.15)', color: 'var(--accent-purple)', border: '1px solid rgba(var(--accent-purple-rgb), 0.3)' }}>Coach</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded font-mono uppercase tracking-wider" style={{ background: 'rgba(var(--accent-green-rgb), 0.15)', color: 'var(--accent-green)', border: '1px solid rgba(var(--accent-green-rgb), 0.3)' }}>Designer</span>
                   </div>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export default function AboutMe() {
                     and <strong style={{ color: 'var(--accent-purple)' }}>mindful design</strong>.
                   </p>
                   <p>
-                    Creator of the FourFlow framework — a holistic approach to cultivating flow states
+                    Creator of the <a href="https://fourflowOS.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'underline' }}>FourFlow</a> framework — a holistic approach to cultivating flow states
                     through Spirit, Story, Space, and Self.
                   </p>
                 </div>
@@ -89,10 +89,10 @@ export default function AboutMe() {
               <div
                 className="p-4 rounded text-sm italic leading-relaxed font-mono"
                 style={{
-                  background: 'rgba(180, 77, 255, 0.05)',
+                  background: 'rgba(var(--accent-purple-rgb), 0.05)',
                   borderLeft: '2px solid var(--accent-purple)',
                   color: 'var(--text-secondary)',
-                  boxShadow: '-4px 0 15px rgba(180, 77, 255, 0.1)',
+                  boxShadow: '-4px 0 15px rgba(var(--accent-purple-rgb), 0.1)',
                 }}
               >
                 &ldquo;My path has led me from the haze of hesitation to the clear rhythm of inspired action.
@@ -204,9 +204,9 @@ export default function AboutMe() {
                   <div
                     className="w-14 shrink-0 text-center py-1.5 rounded font-mono font-bold text-xs"
                     style={{
-                      background: 'rgba(0, 229, 255, 0.15)',
+                      background: 'rgba(var(--accent-cyan-rgb), 0.15)',
                       color: 'var(--accent-cyan)',
-                      border: '1px solid rgba(0, 229, 255, 0.3)',
+                      border: '1px solid rgba(var(--accent-cyan-rgb), 0.3)',
                       boxShadow: '0 0 8px var(--glow-cyan)',
                     }}
                   >
@@ -286,17 +286,17 @@ export default function AboutMe() {
                   onClick={() => setActivePanel('contact')}
                   className="px-5 py-2 rounded text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer"
                   style={{
-                    background: 'rgba(255, 45, 123, 0.15)',
+                    background: 'rgba(var(--accent-magenta-rgb), 0.15)',
                     color: 'var(--accent-magenta)',
                     border: '1px solid var(--accent-magenta)',
                     boxShadow: '0 0 15px var(--glow-magenta)',
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.background = 'rgba(255, 45, 123, 0.25)';
+                    e.currentTarget.style.background = 'rgba(var(--accent-magenta-rgb), 0.25)';
                     e.currentTarget.style.boxShadow = '0 0 25px var(--glow-magenta)';
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.background = 'rgba(255, 45, 123, 0.15)';
+                    e.currentTarget.style.background = 'rgba(var(--accent-magenta-rgb), 0.15)';
                     e.currentTarget.style.boxShadow = '0 0 15px var(--glow-magenta)';
                   }}
                 >

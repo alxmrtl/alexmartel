@@ -28,7 +28,7 @@ export default function PanelFrame({
         background: 'var(--window-bg)',
         border: `1px solid ${accentColor}`,
         borderRadius: 'var(--window-radius)',
-        boxShadow: `0 0 8px ${glowColor}, inset 0 0 8px rgba(0, 229, 255, 0.02)`,
+        boxShadow: `0 0 8px ${glowColor}, inset 0 0 8px rgba(var(--accent-cyan-rgb), 0.02)`,
       }}
     >
       {/* Corner brackets */}
@@ -44,7 +44,7 @@ export default function PanelFrame({
           style={{
             height: '28px',
             background: 'var(--window-header)',
-            borderBottom: `1px solid rgba(0, 229, 255, 0.1)`,
+            borderBottom: `1px solid rgba(var(--accent-cyan-rgb), 0.1)`,
           }}
         >
           {icon && (
@@ -68,7 +68,7 @@ export default function PanelFrame({
       <div
         className={`flex-1 overflow-auto ${noPadding ? '' : 'p-3'}`}
         style={{
-          backgroundImage: 'linear-gradient(rgba(0, 229, 255, 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.01) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(var(--accent-cyan-rgb), 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--accent-cyan-rgb), 0.01) 1px, transparent 1px)',
           backgroundSize: '40px 40px',
         }}
       >

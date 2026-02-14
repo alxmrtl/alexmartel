@@ -10,7 +10,7 @@ export default function MiniProfileWidget() {
         <div
           className="w-12 h-12 rounded mx-auto flex items-center justify-center text-sm font-mono font-bold mb-2"
           style={{
-            background: 'linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(255, 45, 123, 0.15))',
+            background: 'linear-gradient(135deg, rgba(var(--accent-cyan-rgb), 0.15), rgba(var(--accent-magenta-rgb), 0.15))',
             border: '1px solid var(--accent-cyan)',
             color: 'var(--accent-cyan)',
             boxShadow: '0 0 12px var(--glow-cyan)',
@@ -42,9 +42,9 @@ export default function MiniProfileWidget() {
               key={tag}
               className="text-[9px] px-1.5 py-0.5 rounded font-mono uppercase tracking-wider"
               style={{
-                background: 'rgba(0, 229, 255, 0.1)',
+                background: 'rgba(var(--accent-cyan-rgb), 0.1)',
                 color: 'var(--accent-cyan)',
-                border: '1px solid rgba(0, 229, 255, 0.2)',
+                border: '1px solid rgba(var(--accent-cyan-rgb), 0.2)',
               }}
             >
               {tag}

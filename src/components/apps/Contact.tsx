@@ -129,19 +129,19 @@ export default function Contact() {
             disabled={status === 'sending'}
             className="px-5 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all cursor-pointer disabled:opacity-50"
             style={{
-              background: 'rgba(255, 45, 123, 0.15)',
+              background: 'rgba(var(--accent-magenta-rgb), 0.15)',
               color: 'var(--accent-magenta)',
               border: '1px solid var(--accent-magenta)',
               boxShadow: '0 0 15px var(--glow-magenta)',
             }}
             onMouseEnter={e => {
               if (status !== 'sending') {
-                e.currentTarget.style.background = 'rgba(255, 45, 123, 0.25)';
+                e.currentTarget.style.background = 'rgba(var(--accent-magenta-rgb), 0.25)';
                 e.currentTarget.style.boxShadow = '0 0 25px var(--glow-magenta)';
               }
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.background = 'rgba(255, 45, 123, 0.15)';
+              e.currentTarget.style.background = 'rgba(var(--accent-magenta-rgb), 0.15)';
               e.currentTarget.style.boxShadow = '0 0 15px var(--glow-magenta)';
             }}
           >

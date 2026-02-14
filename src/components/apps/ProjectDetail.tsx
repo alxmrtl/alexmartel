@@ -116,9 +116,9 @@ const projectsData: Record<string, ProjectData> = {
     links: [],
     philosophy: 'Financial freedom starts with understanding. Infinite Banker demystifies complex financial strategies and puts you in control of your wealth.',
   },
-  'fourflow-os': {
-    id: 'fourflow-os',
-    name: 'FourFlowOS',
+  'amartel-os': {
+    id: 'amartel-os',
+    name: 'AMARTEL.OS',
     icon: 'SYS',
     tagline: 'A neon neural interface.',
     description: 'This very site — a cyberpunk desktop experience with draggable windows, neon-lit apertures, and a living grid background. Built from scratch with zero UI libraries, every pixel is intentional.',
@@ -155,9 +155,9 @@ export default function ProjectDetail({ props }: ProjectDetailProps) {
   const project = projectsData[projectId] || projectsData.repos;
 
   const statusStyles: Record<string, { color: string; bg: string; border: string }> = {
-    live: { color: 'var(--accent-green)', bg: 'rgba(0, 255, 157, 0.1)', border: 'rgba(0, 255, 157, 0.3)' },
-    beta: { color: 'var(--accent-amber)', bg: 'rgba(255, 184, 0, 0.1)', border: 'rgba(255, 184, 0, 0.3)' },
-    development: { color: 'var(--accent-magenta)', bg: 'rgba(255, 45, 123, 0.1)', border: 'rgba(255, 45, 123, 0.3)' },
+    live: { color: 'var(--accent-green)', bg: 'rgba(var(--accent-green-rgb), 0.1)', border: 'rgba(var(--accent-green-rgb), 0.3)' },
+    beta: { color: 'var(--accent-amber)', bg: 'rgba(var(--accent-amber-rgb), 0.1)', border: 'rgba(var(--accent-amber-rgb), 0.3)' },
+    development: { color: 'var(--accent-magenta)', bg: 'rgba(var(--accent-magenta-rgb), 0.1)', border: 'rgba(var(--accent-magenta-rgb), 0.3)' },
   };
 
   const filteredTabs = project.philosophy ? tabNames : tabNames.slice(0, 3);
@@ -168,7 +168,7 @@ export default function ProjectDetail({ props }: ProjectDetailProps) {
       <div
         className="p-4 shrink-0"
         style={{
-          background: 'linear-gradient(135deg, rgba(0, 229, 255, 0.05) 0%, rgba(255, 45, 123, 0.05) 100%)',
+          background: 'linear-gradient(135deg, rgba(var(--accent-cyan-rgb), 0.05) 0%, rgba(var(--accent-magenta-rgb), 0.05) 100%)',
           borderBottom: '1px solid var(--window-border)',
         }}
       >
@@ -237,16 +237,16 @@ export default function ProjectDetail({ props }: ProjectDetailProps) {
                       rel="noopener noreferrer"
                       className="px-3 py-1.5 text-xs rounded font-bold uppercase tracking-wider transition-all"
                       style={{
-                        background: 'rgba(0, 229, 255, 0.1)',
+                        background: 'rgba(var(--accent-cyan-rgb), 0.1)',
                         color: 'var(--accent-cyan)',
-                        border: '1px solid rgba(0, 229, 255, 0.3)',
+                        border: '1px solid rgba(var(--accent-cyan-rgb), 0.3)',
                       }}
                       onMouseEnter={e => {
-                        e.currentTarget.style.background = 'rgba(0, 229, 255, 0.2)';
+                        e.currentTarget.style.background = 'rgba(var(--accent-cyan-rgb), 0.2)';
                         e.currentTarget.style.boxShadow = '0 0 12px var(--glow-cyan)';
                       }}
                       onMouseLeave={e => {
-                        e.currentTarget.style.background = 'rgba(0, 229, 255, 0.1)';
+                        e.currentTarget.style.background = 'rgba(var(--accent-cyan-rgb), 0.1)';
                         e.currentTarget.style.boxShadow = 'none';
                       }}
                     >
@@ -331,10 +331,10 @@ export default function ProjectDetail({ props }: ProjectDetailProps) {
           <div
             className="p-4 rounded italic text-sm leading-relaxed"
             style={{
-              background: 'rgba(180, 77, 255, 0.05)',
+              background: 'rgba(var(--accent-purple-rgb), 0.05)',
               borderLeft: '2px solid var(--accent-purple)',
               color: 'var(--text-secondary)',
-              boxShadow: '-4px 0 15px rgba(180, 77, 255, 0.1)',
+              boxShadow: '-4px 0 15px rgba(var(--accent-purple-rgb), 0.1)',
             }}
           >
             &ldquo;{project.philosophy}&rdquo;

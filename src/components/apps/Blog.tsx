@@ -90,7 +90,7 @@ export default function Blog() {
             key={post.id}
             className="grid grid-cols-[2fr,1fr,1fr] gap-2 p-2 cursor-pointer text-sm rounded transition-colors"
             style={{
-              background: selectedPost?.id === post.id ? 'rgba(0, 229, 255, 0.08)' : 'transparent',
+              background: selectedPost?.id === post.id ? 'rgba(var(--accent-cyan-rgb), 0.08)' : 'transparent',
               color: 'var(--text-secondary)',
               borderBottom: '1px solid rgba(30, 35, 71, 0.5)',
             }}
@@ -144,9 +144,9 @@ export default function Blog() {
                   key={tag}
                   className="text-[10px] px-1.5 py-0.5 rounded uppercase tracking-wider font-bold"
                   style={{
-                    background: 'rgba(255, 45, 123, 0.1)',
+                    background: 'rgba(var(--accent-magenta-rgb), 0.1)',
                     color: 'var(--accent-magenta)',
-                    border: '1px solid rgba(255, 45, 123, 0.3)',
+                    border: '1px solid rgba(var(--accent-magenta-rgb), 0.3)',
                   }}
                 >
                   {tag}

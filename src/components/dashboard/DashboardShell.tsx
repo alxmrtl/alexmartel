@@ -30,43 +30,69 @@ export default function DashboardShell() {
   }, [setHasSeenBoot]);
 
   if (!isHydrated) {
-    return <div className="h-screen w-screen" style={{ background: 'var(--bg-primary)' }} />;
+    return <div className="h-screen w-screen" style={{ background: '#050510' }} />;
   }
 
   return (
     <>
       {showBoot && <BootSequence onComplete={handleBootComplete} />}
 
-      <div className="relative h-screen w-screen overflow-hidden flex flex-col" style={{ background: 'var(--bg-primary)' }}>
-        {/* Living Canvas — animated background */}
-        <LivingCanvas />
+      {/* Starry background — full viewport */}
+      <div className="h-screen w-screen flex items-center justify-center" style={{ background: '#050510' }}>
+        <div className="starry-bg" />
 
-        {/* Top Bar */}
-        <TopBar />
+        {/* OS Window Container */}
+        <div className="os-window" style={{ background: 'var(--bg-primary)' }}>
+          {/* OS Title Bar */}
+          <div className="os-titlebar">
+            <div className="os-titlebar-dots">
+              <div className="os-titlebar-dot os-titlebar-dot--close" />
+              <div className="os-titlebar-dot os-titlebar-dot--minimize" />
+              <div className="os-titlebar-dot os-titlebar-dot--maximize" />
+            </div>
+            <span className="os-titlebar-title">Alex Martel OS</span>
+          </div>
 
-        {/* Main layout: Sidebar + MainPanel + WidgetRail */}
-        <div className="dashboard-layout flex flex-1 min-h-0 relative" style={{ zIndex: 1 }}>
-          {/* Mobile hamburger */}
-          <button
-            className="fixed top-2 left-2 z-[60] lg:hidden w-8 h-8 flex items-center justify-center rounded cursor-pointer"
-            style={{
-              background: 'var(--bg-elevated)',
-              border: '1px solid rgba(0, 229, 255, 0.3)',
-              top: 'calc(var(--topbar-height) + 8px)',
-            }}
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            aria-label="Toggle navigation"
-          >
-            <span className="text-xs font-mono font-bold" style={{ color: 'var(--accent-cyan)' }}>
-              {sidebarOpen ? 'X' : '='}
-            </span>
-          </button>
+          {/* Inner content area — zoom scales content while window frame stays fixed */}
+          <div className="relative flex-1 flex flex-col overflow-hidden" style={{ zoom: 'var(--ui-scale)' }}>
+            {/* Living Canvas — animated background */}
+            <LivingCanvas />
 
-          <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+            {/* Top Bar */}
+            <TopBar />
 
-          <MainPanel />
+            {/* Main layout: Sidebar + MainPanel + WidgetRail */}
+            <div
+              className="dashboard-layout flex flex-1 min-h-0 relative"
+              style={{
+                zIndex: 1,
+                gap: 'var(--section-gap)',
+                padding: 'var(--section-gap)',
+                paddingTop: 0,
+              }}
+            >
+              {/* Mobile hamburger */}
+              <button
+                className="absolute top-2 left-2 z-[60] lg:hidden w-8 h-8 flex items-center justify-center rounded cursor-pointer"
+                style={{
+                  background: 'var(--bg-elevated)',
+                  border: '1px solid rgba(var(--accent-cyan-rgb), 0.3)',
+                }}
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                aria-label="Toggle navigation"
+              >
+                <span className="text-xs font-mono font-bold" style={{ color: 'var(--accent-cyan)' }}>
+                  {sidebarOpen ? 'X' : '='}
+                </span>
+              </button>
 
-          <WidgetRail />
+              <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+              <MainPanel />
+
+              <WidgetRail />
+            </div>
+          </div>
         </div>
       </div>
     </>

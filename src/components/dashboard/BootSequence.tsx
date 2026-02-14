@@ -67,7 +67,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 229, 255, 0.02) 2px, rgba(0, 229, 255, 0.02) 4px)',
+              background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(var(--accent-cyan-rgb), 0.02) 2px, rgba(var(--accent-cyan-rgb), 0.02) 4px)',
               zIndex: 1,
             }}
           />
@@ -80,7 +80,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
                 className="text-xs font-mono mb-1"
                 style={{
                   color: i === lines.length - 1 && line === 'SYSTEM READY.'
-                    ? '#00ff9d'
+                    ? 'var(--accent-green)'
                     : '#4a5580',
                   fontFamily: 'var(--font-mono)',
                 }}
@@ -100,9 +100,9 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
               <motion.h1
                 className="text-4xl font-bold tracking-[0.3em] uppercase text-center relative z-10"
                 style={{
-                  color: '#00e5ff',
+                  color: 'var(--accent-cyan)',
                   fontFamily: 'var(--font-display)',
-                  textShadow: '0 0 20px rgba(0, 229, 255, 0.5), 0 0 40px rgba(0, 229, 255, 0.2)',
+                  textShadow: '0 0 20px rgba(var(--accent-cyan-rgb), 0.5), 0 0 40px rgba(var(--accent-cyan-rgb), 0.2)',
                   animation: 'textGlitch 0.3s ease-in-out 1',
                 }}
                 initial={{ opacity: 0, scale: 1.1, filter: 'blur(8px)' }}
@@ -137,8 +137,8 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
             <div
               className="h-full"
               style={{
-                background: '#00e5ff',
-                boxShadow: '0 0 12px rgba(0, 229, 255, 0.6), 0 0 24px rgba(0, 229, 255, 0.3)',
+                background: 'var(--accent-cyan)',
+                boxShadow: '0 0 12px rgba(var(--accent-cyan-rgb), 0.6), 0 0 24px rgba(var(--accent-cyan-rgb), 0.3)',
                 animation: `progress-line ${0.2 + bootMessages.length * 0.35 + 1.0}s ease-out forwards`,
               }}
             />

@@ -48,8 +48,8 @@ const projects: Project[] = [
     status: 'development',
   },
   {
-    id: 'fourflow-os',
-    name: 'FourFlowOS',
+    id: 'amartel-os',
+    name: 'AMARTEL.OS',
     icon: 'SYS',
     description: 'This portfolio site — a neon cyberpunk desktop experience built from scratch. Neural interface meets draggable windows.',
     tech: ['Next.js', 'Tailwind', 'Zustand', 'Web Audio'],
@@ -69,9 +69,9 @@ export default function Portfolio() {
   };
 
   const statusStyles: Record<string, { color: string; bg: string; border: string }> = {
-    live: { color: 'var(--accent-green)', bg: 'rgba(0, 255, 157, 0.1)', border: 'rgba(0, 255, 157, 0.3)' },
-    beta: { color: 'var(--accent-amber)', bg: 'rgba(255, 184, 0, 0.1)', border: 'rgba(255, 184, 0, 0.3)' },
-    development: { color: 'var(--accent-magenta)', bg: 'rgba(255, 45, 123, 0.1)', border: 'rgba(255, 45, 123, 0.3)' },
+    live: { color: 'var(--accent-green)', bg: 'rgba(var(--accent-green-rgb), 0.1)', border: 'rgba(var(--accent-green-rgb), 0.3)' },
+    beta: { color: 'var(--accent-amber)', bg: 'rgba(var(--accent-amber-rgb), 0.1)', border: 'rgba(var(--accent-amber-rgb), 0.3)' },
+    development: { color: 'var(--accent-magenta)', bg: 'rgba(var(--accent-magenta-rgb), 0.1)', border: 'rgba(var(--accent-magenta-rgb), 0.3)' },
   };
 
   return (
@@ -82,9 +82,9 @@ export default function Portfolio() {
           onClick={() => setViewMode('icons')}
           className="px-3 py-1 text-xs rounded transition-colors cursor-pointer font-mono uppercase tracking-wider"
           style={{
-            background: viewMode === 'icons' ? 'rgba(0, 229, 255, 0.1)' : 'transparent',
+            background: viewMode === 'icons' ? 'rgba(var(--accent-cyan-rgb), 0.1)' : 'transparent',
             color: viewMode === 'icons' ? 'var(--accent-cyan)' : 'var(--text-tertiary)',
-            border: viewMode === 'icons' ? '1px solid rgba(0, 229, 255, 0.3)' : '1px solid transparent',
+            border: viewMode === 'icons' ? '1px solid rgba(var(--accent-cyan-rgb), 0.3)' : '1px solid transparent',
           }}
         >
           Grid
@@ -93,9 +93,9 @@ export default function Portfolio() {
           onClick={() => setViewMode('list')}
           className="px-3 py-1 text-xs rounded transition-colors cursor-pointer font-mono uppercase tracking-wider"
           style={{
-            background: viewMode === 'list' ? 'rgba(0, 229, 255, 0.1)' : 'transparent',
+            background: viewMode === 'list' ? 'rgba(var(--accent-cyan-rgb), 0.1)' : 'transparent',
             color: viewMode === 'list' ? 'var(--accent-cyan)' : 'var(--text-tertiary)',
-            border: viewMode === 'list' ? '1px solid rgba(0, 229, 255, 0.3)' : '1px solid transparent',
+            border: viewMode === 'list' ? '1px solid rgba(var(--accent-cyan-rgb), 0.3)' : '1px solid transparent',
           }}
         >
           List
@@ -113,8 +113,8 @@ export default function Portfolio() {
                 key={project.id}
                 className="flex flex-col items-center gap-2 p-4 rounded cursor-pointer transition-colors text-center"
                 style={{
-                  background: selectedProject?.id === project.id ? 'rgba(0, 229, 255, 0.08)' : 'transparent',
-                  border: selectedProject?.id === project.id ? '1px solid rgba(0, 229, 255, 0.3)' : '1px solid transparent',
+                  background: selectedProject?.id === project.id ? 'rgba(var(--accent-cyan-rgb), 0.08)' : 'transparent',
+                  border: selectedProject?.id === project.id ? '1px solid rgba(var(--accent-cyan-rgb), 0.3)' : '1px solid transparent',
                   boxShadow: selectedProject?.id === project.id ? '0 0 15px var(--glow-cyan)' : 'none',
                 }}
                 initial={{ opacity: 0, y: 15 }}
@@ -180,7 +180,7 @@ export default function Portfolio() {
                 key={project.id}
                 className="grid grid-cols-[2fr,1fr,1fr] gap-2 p-2 cursor-pointer rounded transition-colors"
                 style={{
-                  background: selectedProject?.id === project.id ? 'rgba(0, 229, 255, 0.08)' : 'transparent',
+                  background: selectedProject?.id === project.id ? 'rgba(var(--accent-cyan-rgb), 0.08)' : 'transparent',
                   color: 'var(--text-secondary)',
                   borderBottom: '1px solid rgba(30, 35, 71, 0.5)',
                 }}
@@ -237,7 +237,7 @@ export default function Portfolio() {
                 <p className="text-xs line-clamp-2" style={{ color: 'var(--text-tertiary)' }}>{selectedProject.description}</p>
                 <div className="flex gap-1 mt-1 flex-wrap">
                   {selectedProject.tech.slice(0, 3).map(t => (
-                    <span key={t} className="text-[10px] px-1.5 py-0.5 rounded" style={{ background: 'rgba(0, 229, 255, 0.1)', color: 'var(--accent-cyan)', border: '1px solid rgba(0, 229, 255, 0.2)' }}>{t}</span>
+                    <span key={t} className="text-[10px] px-1.5 py-0.5 rounded" style={{ background: 'rgba(var(--accent-cyan-rgb), 0.1)', color: 'var(--accent-cyan)', border: '1px solid rgba(var(--accent-cyan-rgb), 0.2)' }}>{t}</span>
                   ))}
                 </div>
               </div>

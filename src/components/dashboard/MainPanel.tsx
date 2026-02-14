@@ -75,7 +75,7 @@ export default function MainPanel() {
                     e.currentTarget.style.textShadow = 'none';
                   }}
                 >
-                  &lt; Back to Portfolio
+                  &lt; Back to Projects
                 </button>
               </div>
               <div className="flex-1 overflow-auto">

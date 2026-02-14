@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Share_Tech_Mono, Orbitron } from "next/font/google";
+import ThemeApplicator from "@/components/ThemeApplicator";
 import "./globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -40,7 +41,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jetbrainsMono.variable} ${shareTechMono.variable} ${orbitron.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ThemeApplicator />
+        {children}
+      </body>
     </html>
   );
 }

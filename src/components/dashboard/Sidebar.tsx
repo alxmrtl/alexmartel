@@ -30,20 +30,20 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       {/* Mobile overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          className="absolute inset-0 bg-black/50 z-40 lg:hidden"
           onClick={onClose}
         />
       )}
 
       <nav
         className={`dashboard-sidebar flex flex-col shrink-0 select-none
-          fixed lg:relative top-[var(--topbar-height)] lg:top-0 left-0 h-[calc(100%-var(--topbar-height))] lg:h-auto
+          absolute lg:relative top-0 left-0 h-full lg:h-auto
           z-50 lg:z-auto transition-transform duration-300 lg:translate-x-0
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
         style={{
           width: 'var(--sidebar-width)',
           background: 'var(--bg-secondary)',
-          borderRight: '1px solid rgba(0, 229, 255, 0.15)',
+          borderRight: '1px solid rgba(var(--accent-cyan-rgb), 0.15)',
         }}
       >
         {/* Nav header */}
@@ -51,7 +51,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           className="px-3 py-3 text-[10px] font-mono uppercase tracking-widest shrink-0"
           style={{
             color: 'var(--text-dim)',
-            borderBottom: '1px solid rgba(0, 229, 255, 0.08)',
+            borderBottom: '1px solid rgba(var(--accent-cyan-rgb), 0.08)',
           }}
         >
           // Modules
@@ -70,7 +70,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 className="w-full flex items-start gap-3 px-3 py-2.5 text-left cursor-pointer transition-colors relative"
                 style={{
                   background: isActive
-                    ? `rgba(${section.accentColor === 'var(--accent-cyan)' ? '0,229,255' : section.accentColor === 'var(--accent-amber)' ? '255,184,0' : section.accentColor === 'var(--accent-green)' ? '0,255,157' : section.accentColor === 'var(--accent-magenta)' ? '255,45,123' : '180,77,255'}, 0.08)`
+                    ? `rgba(${section.accentRgb}, 0.08)`
                     : 'transparent',
                 }}
                 initial={{ opacity: 0, x: -10 }}
@@ -130,7 +130,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           className="px-3 py-2 text-[10px] font-mono shrink-0"
           style={{
             color: 'var(--text-dim)',
-            borderTop: '1px solid rgba(0, 229, 255, 0.08)',
+            borderTop: '1px solid rgba(var(--accent-cyan-rgb), 0.08)',
           }}
         >
           <span style={{ color: 'var(--accent-cyan)' }}>SYS</span> {sections.length} modules loaded

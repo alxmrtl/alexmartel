@@ -213,8 +213,8 @@ export default function ForgeHealth() {
               style={{
                 background: isSelected
                   ? isDayToday
-                    ? 'rgba(255, 107, 53, 0.1)'
-                    : 'rgba(0, 229, 255, 0.06)'
+                    ? 'rgba(var(--accent-orange-rgb), 0.1)'
+                    : 'rgba(var(--accent-cyan-rgb), 0.06)'
                   : 'var(--bg-tertiary)',
                 border: `1px solid ${isSelected ? accent : 'var(--window-border)'}`,
                 borderLeft: `3px solid ${intensityColors[day.intensity]}`,
@@ -278,8 +278,8 @@ export default function ForgeHealth() {
               <div
                 className="rounded p-2.5 mb-3"
                 style={{
-                  background: 'rgba(0, 229, 255, 0.04)',
-                  border: '1px solid rgba(0, 229, 255, 0.12)',
+                  background: 'rgba(var(--accent-cyan-rgb), 0.04)',
+                  border: '1px solid rgba(var(--accent-cyan-rgb), 0.12)',
                 }}
               >
                 <div
@@ -342,7 +342,7 @@ export default function ForgeHealth() {
                 <div
                   className="mt-3 p-2 rounded-r text-[10px] leading-relaxed"
                   style={{
-                    background: 'rgba(255, 107, 53, 0.06)',
+                    background: 'rgba(var(--accent-orange-rgb), 0.06)',
                     borderLeft: '2px solid var(--accent-orange)',
                     color: 'var(--text-tertiary)',
                   }}
@@ -373,8 +373,8 @@ export default function ForgeHealth() {
                   className="px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded cursor-pointer transition-all"
                   style={{
                     color: isActive ? 'var(--accent-orange)' : 'var(--text-tertiary)',
-                    background: isActive ? 'rgba(255, 107, 53, 0.1)' : 'transparent',
-                    border: `1px solid ${isActive ? 'rgba(255, 107, 53, 0.3)' : 'transparent'}`,
+                    background: isActive ? 'rgba(var(--accent-orange-rgb), 0.1)' : 'transparent',
+                    border: `1px solid ${isActive ? 'rgba(var(--accent-orange-rgb), 0.3)' : 'transparent'}`,
                     textShadow: isActive ? '0 0 6px var(--glow-orange)' : 'none',
                   }}
                 >
@@ -616,8 +616,8 @@ export default function ForgeHealth() {
                   <div
                     className="p-2.5 rounded"
                     style={{
-                      background: 'rgba(255, 107, 53, 0.05)',
-                      border: '1px solid rgba(255, 107, 53, 0.15)',
+                      background: 'rgba(var(--accent-orange-rgb), 0.05)',
+                      border: '1px solid rgba(var(--accent-orange-rgb), 0.15)',
                     }}
                   >
                     <h4 className="text-[11px] font-bold mb-2" style={{ color: 'var(--accent-orange)' }}>
@@ -643,8 +643,8 @@ export default function ForgeHealth() {
                     className="text-[10px] text-center py-2 px-3 rounded font-semibold"
                     style={{
                       color: 'var(--accent-green)',
-                      background: 'rgba(0, 255, 157, 0.05)',
-                      border: '1px solid rgba(0, 255, 157, 0.15)',
+                      background: 'rgba(var(--accent-green-rgb), 0.05)',
+                      border: '1px solid rgba(var(--accent-green-rgb), 0.15)',
                     }}
                   >
                     One bad meal in 21 is &lt;5%. You&apos;re fine.

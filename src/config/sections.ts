@@ -6,35 +6,39 @@ export interface SectionConfig {
   hint: string;
   accentColor: string;
   glowColor: string;
+  accentRgb: string;
 }
 
 export const sections: SectionConfig[] = [
   {
     id: 'about-me',
-    title: 'About Me',
+    title: 'User',
     icon: '[USR]',
     component: 'AboutMe',
     hint: 'Neural profile & capabilities',
     accentColor: 'var(--accent-cyan)',
     glowColor: 'var(--glow-cyan)',
+    accentRgb: 'var(--accent-cyan-rgb)',
   },
   {
     id: 'portfolio',
-    title: 'Portfolio',
+    title: 'Projects',
     icon: '[PRJ]',
     component: 'Portfolio',
     hint: 'Deployed systems & builds',
     accentColor: 'var(--accent-amber)',
     glowColor: 'var(--glow-amber)',
+    accentRgb: 'var(--accent-amber-rgb)',
   },
   {
     id: 'blog',
-    title: 'Blog / Writing',
+    title: 'Notes',
     icon: '[LOG]',
     component: 'Blog',
     hint: 'Transmission logs & ideas',
     accentColor: 'var(--accent-green)',
     glowColor: 'var(--glow-green)',
+    accentRgb: 'var(--accent-green-rgb)',
   },
   {
     id: 'contact',
@@ -44,23 +48,16 @@ export const sections: SectionConfig[] = [
     hint: 'Open a comm channel',
     accentColor: 'var(--accent-magenta)',
     glowColor: 'var(--glow-magenta)',
-  },
-  {
-    id: 'now',
-    title: 'Now',
-    icon: '[SYS]',
-    component: 'NowPage',
-    hint: 'Current system status',
-    accentColor: 'var(--accent-purple)',
-    glowColor: 'var(--glow-purple)',
+    accentRgb: 'var(--accent-magenta-rgb)',
   },
   {
     id: 'forge',
     title: 'FORGE',
     icon: '[FRG]',
     component: 'ForgeHealth',
-    hint: 'Health optimization protocol',
+    hint: 'Current health routine',
     accentColor: 'var(--accent-orange)',
     glowColor: 'var(--glow-orange)',
+    accentRgb: 'var(--accent-orange-rgb)',
   },
 ];

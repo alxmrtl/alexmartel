@@ -17,7 +17,7 @@ const nowSections: NowSection[] = [
     accentColor: 'var(--accent-amber)',
     glowColor: 'var(--glow-amber)',
     items: [
-      'FourFlowOS — this neural interface',
+      'AMARTEL.OS — this neural interface',
       'REP.OS — micro-workout tracker (beta)',
       'FlowSpace — focus & productivity PWA',
     ],

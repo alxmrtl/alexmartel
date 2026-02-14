@@ -1,16 +1,32 @@
 'use client';
 
+import { useState, useRef, useEffect } from 'react';
 import { useNavigationStore } from '@/store/navigationStore';
 import { useSettingsStore } from '@/store/settingsStore';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
 import { sections } from '@/config/sections';
+import ThemeControl from './ThemeControl';
 
 export default function TopBar() {
+  const [themeOpen, setThemeOpen] = useState(false);
+  const themeRef = useRef<HTMLDivElement>(null);
   const activePanel = useNavigationStore(state => state.activePanel);
   const activeProjectId = useNavigationStore(state => state.activeProjectId);
   const soundEnabled = useSettingsStore(state => state.soundEnabled);
   const toggleSound = useSettingsStore(state => state.toggleSound);
   const { playSound } = useSoundEffects();
+
+  // Close theme panel on outside click
+  useEffect(() => {
+    if (!themeOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (themeRef.current && !themeRef.current.contains(e.target as Node)) {
+        setThemeOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [themeOpen]);
 
   const activeSection = sections.find(s => s.id === activePanel);
   const displayModule = activeProjectId
@@ -28,7 +44,7 @@ export default function TopBar() {
       style={{
         height: 'var(--topbar-height)',
         background: 'var(--window-header)',
-        borderBottom: '1px solid rgba(0, 229, 255, 0.2)',
+        borderBottom: '1px solid rgba(var(--accent-cyan-rgb), 0.2)',
         boxShadow: '0 2px 12px rgba(0, 0, 0, 0.3)',
         zIndex: 100,
       }}
@@ -43,7 +59,7 @@ export default function TopBar() {
             textShadow: '0 0 12px var(--glow-cyan)',
           }}
         >
-          FOURFLOW.OS
+          AMARTEL.OS
         </span>
         <span className="text-xs font-mono" style={{ color: 'var(--text-dim)' }}>v1.0</span>
       </div>
@@ -64,14 +80,32 @@ export default function TopBar() {
 
       {/* Right: Controls */}
       <div className="flex items-center gap-3">
+        {/* Theme toggle */}
+        <div className="relative" ref={themeRef}>
+          <button
+            onClick={() => setThemeOpen(!themeOpen)}
+            className="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded cursor-pointer transition-all"
+            style={{
+              background: themeOpen ? 'rgba(var(--accent-cyan-rgb), 0.15)' : 'rgba(var(--accent-cyan-rgb), 0.06)',
+              color: themeOpen ? 'var(--accent-cyan)' : 'var(--accent-cyan)',
+              border: `1px solid rgba(var(--accent-cyan-rgb), ${themeOpen ? '0.5' : '0.25'})`,
+              textShadow: '0 0 6px var(--glow-cyan)',
+              boxShadow: themeOpen ? '0 0 10px var(--glow-cyan)' : 'none',
+            }}
+          >
+            CFG
+          </button>
+          {themeOpen && <ThemeControl onClose={() => setThemeOpen(false)} />}
+        </div>
+
         {/* Sound toggle */}
         <button
           onClick={handleSoundToggle}
           className="px-2 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded cursor-pointer transition-all"
           style={{
-            background: soundEnabled ? 'rgba(0, 255, 157, 0.1)' : 'transparent',
+            background: soundEnabled ? 'rgba(var(--accent-green-rgb), 0.1)' : 'transparent',
             color: soundEnabled ? 'var(--accent-green)' : 'var(--text-dim)',
-            border: `1px solid ${soundEnabled ? 'rgba(0, 255, 157, 0.3)' : 'var(--window-border)'}`,
+            border: `1px solid ${soundEnabled ? 'rgba(var(--accent-green-rgb), 0.3)' : 'var(--window-border)'}`,
             textShadow: soundEnabled ? '0 0 6px var(--glow-green)' : 'none',
           }}
         >
