@@ -1,7 +1,7 @@
 'use client';
 
 import ClockWidget from './ClockWidget';
-import StatusWidget from './StatusWidget';
+import ConfigWidget from './ConfigWidget';
 import QuickLinksWidget from './QuickLinksWidget';
 import MiniProfileWidget from './MiniProfileWidget';
 
@@ -16,7 +16,7 @@ export default function WidgetRail() {
       }}
     >
       <ClockWidget />
-      <StatusWidget />
+      <ConfigWidget />
       <QuickLinksWidget />
       <MiniProfileWidget />
     </aside>

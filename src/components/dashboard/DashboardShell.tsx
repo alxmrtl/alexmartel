@@ -8,11 +8,13 @@ import TopBar from './TopBar';
 import Sidebar from './Sidebar';
 import MainPanel from './MainPanel';
 import WidgetRail from '../widgets/WidgetRail';
+import ConfigWidget from '../widgets/ConfigWidget';
 
 export default function DashboardShell() {
   const [showBoot, setShowBoot] = useState(true);
   const [isHydrated, setIsHydrated] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [configOpen, setConfigOpen] = useState(false);
 
   const hasSeenBoot = useSettingsStore(state => state.hasSeenBoot);
   const setHasSeenBoot = useSettingsStore(state => state.setHasSeenBoot);
@@ -28,6 +30,22 @@ export default function DashboardShell() {
     setShowBoot(false);
     setHasSeenBoot(true);
   }, [setHasSeenBoot]);
+
+  const handleSidebarToggle = useCallback(() => {
+    setSidebarOpen(prev => {
+      const next = !prev;
+      if (next) setConfigOpen(false);
+      return next;
+    });
+  }, []);
+
+  const handleConfigToggle = useCallback(() => {
+    setConfigOpen(prev => {
+      const next = !prev;
+      if (next) setSidebarOpen(false);
+      return next;
+    });
+  }, []);
 
   if (!isHydrated) {
     return <div className="h-screen w-screen" style={{ background: '#050510' }} />;
@@ -45,11 +63,6 @@ export default function DashboardShell() {
         <div className="os-window" style={{ background: 'var(--bg-primary)' }}>
           {/* OS Title Bar */}
           <div className="os-titlebar">
-            <div className="os-titlebar-dots">
-              <div className="os-titlebar-dot os-titlebar-dot--close" />
-              <div className="os-titlebar-dot os-titlebar-dot--minimize" />
-              <div className="os-titlebar-dot os-titlebar-dot--maximize" />
-            </div>
             <span className="os-titlebar-title">Alex Martel OS</span>
           </div>
 
@@ -59,7 +72,7 @@ export default function DashboardShell() {
             <LivingCanvas />
 
             {/* Top Bar */}
-            <TopBar />
+            <TopBar onConfigToggle={handleConfigToggle} configOpen={configOpen} />
 
             {/* Main layout: Sidebar + MainPanel + WidgetRail */}
             <div
@@ -78,7 +91,7 @@ export default function DashboardShell() {
                   background: 'var(--bg-elevated)',
                   border: '1px solid rgba(var(--accent-cyan-rgb), 0.3)',
                 }}
-                onClick={() => setSidebarOpen(!sidebarOpen)}
+                onClick={handleSidebarToggle}
                 aria-label="Toggle navigation"
               >
                 <span className="text-xs font-mono font-bold" style={{ color: 'var(--accent-cyan)' }}>
@@ -91,6 +104,27 @@ export default function DashboardShell() {
               <MainPanel />
 
               <WidgetRail />
+
+              {/* Config Drawer (small screens — visible below xl) */}
+              {configOpen && (
+                <div
+                  className="absolute inset-0 bg-black/50 z-40 xl:hidden"
+                  onClick={() => setConfigOpen(false)}
+                />
+              )}
+              <div
+                className={`absolute top-0 right-0 h-full z-50 xl:hidden transition-transform duration-300
+                  ${configOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                style={{
+                  width: '280px',
+                  background: 'var(--bg-secondary)',
+                  borderLeft: '1px solid rgba(var(--accent-cyan-rgb), 0.15)',
+                }}
+              >
+                <div className="p-3 overflow-auto h-full">
+                  <ConfigWidget />
+                </div>
+              </div>
             </div>
           </div>
         </div>

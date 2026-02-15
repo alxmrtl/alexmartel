@@ -72,7 +72,7 @@ export default function Blog() {
       <div className="flex-1 overflow-auto">
         {/* List header */}
         <div
-          className="grid grid-cols-[2fr,1fr,1fr] gap-2 p-2 text-xs font-bold uppercase tracking-wider sticky top-0"
+          className="grid grid-cols-[2fr,1fr,1fr] gap-2 p-2.5 text-xs font-bold uppercase tracking-wider sticky top-0"
           style={{
             color: 'var(--accent-cyan)',
             borderBottom: '1px solid var(--window-border)',
@@ -88,7 +88,7 @@ export default function Blog() {
         {blogPosts.map((post, i) => (
           <motion.div
             key={post.id}
-            className="grid grid-cols-[2fr,1fr,1fr] gap-2 p-2 cursor-pointer text-sm rounded transition-colors"
+            className="grid grid-cols-[2fr,1fr,1fr] gap-2 p-2.5 cursor-pointer text-sm rounded transition-colors"
             style={{
               background: selectedPost?.id === post.id ? 'rgba(var(--accent-cyan-rgb), 0.08)' : 'transparent',
               color: 'var(--text-secondary)',

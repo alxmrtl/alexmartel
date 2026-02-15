@@ -51,7 +51,7 @@ export default function Contact() {
         // Open Comm Channel
       </div>
 
-      <form onSubmit={handleSubmit} className="flex-1 space-y-3">
+      <form onSubmit={handleSubmit} className="flex-1 module-container space-y-4">
         {fields.map((f, i) => (
           <motion.div
             key={f.field}

@@ -1,32 +1,21 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
 import { useNavigationStore } from '@/store/navigationStore';
 import { useSettingsStore } from '@/store/settingsStore';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
 import { sections } from '@/config/sections';
-import ThemeControl from './ThemeControl';
 
-export default function TopBar() {
-  const [themeOpen, setThemeOpen] = useState(false);
-  const themeRef = useRef<HTMLDivElement>(null);
+interface TopBarProps {
+  onConfigToggle: () => void;
+  configOpen: boolean;
+}
+
+export default function TopBar({ onConfigToggle, configOpen }: TopBarProps) {
   const activePanel = useNavigationStore(state => state.activePanel);
   const activeProjectId = useNavigationStore(state => state.activeProjectId);
   const soundEnabled = useSettingsStore(state => state.soundEnabled);
   const toggleSound = useSettingsStore(state => state.toggleSound);
   const { playSound } = useSoundEffects();
-
-  // Close theme panel on outside click
-  useEffect(() => {
-    if (!themeOpen) return;
-    const handler = (e: MouseEvent) => {
-      if (themeRef.current && !themeRef.current.contains(e.target as Node)) {
-        setThemeOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, [themeOpen]);
 
   const activeSection = sections.find(s => s.id === activePanel);
   const displayModule = activeProjectId
@@ -80,23 +69,20 @@ export default function TopBar() {
 
       {/* Right: Controls */}
       <div className="flex items-center gap-3">
-        {/* Theme toggle */}
-        <div className="relative" ref={themeRef}>
-          <button
-            onClick={() => setThemeOpen(!themeOpen)}
-            className="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded cursor-pointer transition-all"
-            style={{
-              background: themeOpen ? 'rgba(var(--accent-cyan-rgb), 0.15)' : 'rgba(var(--accent-cyan-rgb), 0.06)',
-              color: themeOpen ? 'var(--accent-cyan)' : 'var(--accent-cyan)',
-              border: `1px solid rgba(var(--accent-cyan-rgb), ${themeOpen ? '0.5' : '0.25'})`,
-              textShadow: '0 0 6px var(--glow-cyan)',
-              boxShadow: themeOpen ? '0 0 10px var(--glow-cyan)' : 'none',
-            }}
-          >
-            CFG
-          </button>
-          {themeOpen && <ThemeControl onClose={() => setThemeOpen(false)} />}
-        </div>
+        {/* CFG button — only visible when WidgetRail is hidden */}
+        <button
+          onClick={onConfigToggle}
+          className="xl:hidden px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded cursor-pointer transition-all"
+          style={{
+            background: configOpen ? 'rgba(var(--accent-cyan-rgb), 0.15)' : 'rgba(var(--accent-cyan-rgb), 0.06)',
+            color: 'var(--accent-cyan)',
+            border: `1px solid rgba(var(--accent-cyan-rgb), ${configOpen ? '0.5' : '0.25'})`,
+            textShadow: '0 0 6px var(--glow-cyan)',
+            boxShadow: configOpen ? '0 0 10px var(--glow-cyan)' : 'none',
+          }}
+        >
+          CFG
+        </button>
 
         {/* Sound toggle */}
         <button

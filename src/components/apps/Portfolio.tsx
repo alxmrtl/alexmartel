@@ -105,9 +105,9 @@ export default function Portfolio() {
       </div>
 
       {/* Content area */}
-      <div className="flex-1 overflow-auto p-3">
+      <div className="flex-1 overflow-auto p-4">
         {viewMode === 'icons' ? (
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-4">
             {projects.map((project, i) => (
               <motion.button
                 key={project.id}

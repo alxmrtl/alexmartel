@@ -76,10 +76,11 @@ export default function NowPage() {
         </p>
       </div>
 
-      <div className="space-y-5">
+      <div className="space-y-6">
         {nowSections.map((section, i) => (
           <motion.div
             key={section.title}
+            className="module-container"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: i * 0.12 }}
@@ -101,7 +102,7 @@ export default function NowPage() {
                 {section.title}
               </h3>
             </div>
-            <div className="space-y-1 ml-7">
+            <div className="space-y-1">
               {section.items.map((item, j) => (
                 <motion.div
                   key={j}

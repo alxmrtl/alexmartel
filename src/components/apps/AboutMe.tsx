@@ -39,14 +39,14 @@ export default function AboutMe() {
           {activeTab === 0 && (
             <motion.div
               key="about"
-              className="space-y-5"
+              className="space-y-6"
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.25 }}
             >
               {/* Profile Header */}
-              <div className="flex gap-4 items-start">
+              <div className="module-container flex gap-4 items-start">
                 <div
                   className="w-16 h-16 rounded flex items-center justify-center text-xl font-mono font-bold shrink-0"
                   style={{
@@ -70,7 +70,7 @@ export default function AboutMe() {
               </div>
 
               {/* Bio */}
-              <div>
+              <div className="module-container">
                 <div className="text-[10px] uppercase tracking-widest mb-2 font-semibold font-mono" style={{ color: 'var(--accent-cyan)' }}>// Bio</div>
                 <div className="text-sm leading-relaxed font-mono" style={{ color: 'var(--text-secondary)' }}>
                   <p className="mb-2">
@@ -106,13 +106,13 @@ export default function AboutMe() {
           {activeTab === 1 && (
             <motion.div
               key="skills"
-              className="space-y-5"
+              className="space-y-6"
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.25 }}
             >
-              <div>
+              <div className="module-container">
                 <div className="text-[10px] uppercase tracking-widest mb-3 font-semibold font-mono" style={{ color: 'var(--accent-cyan)' }}>// Technical Skills</div>
                 <div className="grid grid-cols-2 gap-3">
                   {[
@@ -145,7 +145,7 @@ export default function AboutMe() {
                 </div>
               </div>
 
-              <div>
+              <div className="module-container">
                 <div className="text-[10px] uppercase tracking-widest mb-3 font-semibold font-mono" style={{ color: 'var(--accent-cyan)' }}>// Frameworks &amp; Philosophy</div>
                 <div className="grid grid-cols-2 gap-2 text-sm font-mono">
                   {[
